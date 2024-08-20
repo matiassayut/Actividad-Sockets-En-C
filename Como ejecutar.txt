@@ -1,0 +1,5 @@
+En el directorio del proyecto, desde la terminal, hay que correr los siguientes comandos:
+gcc server.c -o server -lws2_32
+gcc client.c -o client -lws2_32
+
+Los mismos, generan un .exe para el servidor y para el cliente en C, lo que posibilita ejecutarlos al mismo tiempo.
