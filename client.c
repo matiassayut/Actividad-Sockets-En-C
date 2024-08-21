@@ -60,7 +60,6 @@ void Client_Enviar(Client* cliente) {
 
         switch (opcion[0]) {
             case '1':
-                system("cls");
                 printf("Ingrese la longitud deseada: (Entre 5 y 15)\n");
                 getchar();  // limpiar el buffer del teclado
                 while (fgets(mensaje, sizeof(mensaje), stdin)) {
@@ -83,7 +82,6 @@ void Client_Enviar(Client* cliente) {
                 break;
 
             case '2':
-                system("cls");
                 printf("Ingrese la longitud deseada: (Entre 8 inclusive y 50)\n");
                 getchar();  // limpiar el buffer del teclado
                 while (fgets(mensaje, sizeof(mensaje), stdin)) {
@@ -116,13 +114,11 @@ void Client_Enviar(Client* cliente) {
                 break;
 
             default:
-                system("cls");
                 printf("Error, ha ingresado un caracter incorrecto\n\n");
                 break;
         }
     } while (!salir);
 
-    system("cls");
     send(cliente->server, cliente->buffer, sizeof(cliente->buffer), 0);
     memset(cliente->buffer, 0, sizeof(cliente->buffer));
     printf("El mensaje ha sido enviado.\n");
@@ -130,7 +126,7 @@ void Client_Enviar(Client* cliente) {
 
 int Client_Recibir(Client* cliente) {
     int rec = recv(cliente->server, cliente->buffer, sizeof(cliente->buffer), 0);
-    printf("El servidor dice: \n%s\n\n", cliente->buffer);
+    printf("\nEl servidor dice: \n%s\n\n", cliente->buffer);
     memset(cliente->buffer, 0, sizeof(cliente->buffer));
     return rec;
 }
@@ -153,7 +149,6 @@ int main() {
         }
     }
 
-    system("cls");
     printf("Se ha cerrado la conexion.\n");
     return 0;
 }
