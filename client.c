@@ -12,7 +12,6 @@ typedef struct Client {
     char buffer[1024];
     bool activo;
     int puerto;
-    bool solicitoLog;
 } Client;
 
 void Client_Init(Client* cliente);
@@ -22,7 +21,6 @@ void Client_CerrarSocket(Client* cliente);
 
 void Client_Init(Client* cliente) {
     cliente->activo = true;
-    cliente->solicitoLog = false;
 
     printf("Ingrese el puerto al que quiere conectarse: ");
     scanf("%d", &(cliente->puerto));
@@ -41,7 +39,7 @@ void Client_Init(Client* cliente) {
         cliente->addr.sin_port = htons(cliente->puerto);
     }
 
-    printf("Conectado al Servidor!\n\n\n");
+    printf("Conectado al Servidor!\n\n");
 }
 
 void Client_Enviar(Client* cliente) {
