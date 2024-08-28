@@ -59,8 +59,13 @@ void Server_Enviar(Server* servidor) {
         case 'a':
             printf("El cliente solicito Generar nombre de usuario.\n");
             memmove (servidor->bufferString, servidor->bufferString+1, strlen (servidor->bufferString+1) + 1); //Remover primer char correspondiente a la opcion
-            GenerarNombreDeUsuario(servidor->buffer,atoi(servidor->bufferString));
-            printf("El resultado enviado es: %s\n",servidor->buffer);
+            if (atoi(servidor->bufferString) >= 5 && atoi(servidor->bufferString) <= 15){
+                GenerarNombreDeUsuario(servidor->buffer,atoi(servidor->bufferString));
+                printf("El resultado enviado es: %s\n",servidor->buffer);
+            } else {
+                strcpy(servidor->buffer,"ERROR, longitud incorrecta");
+                printf("ERROR, longitud incorrecta\n");
+            }
             send(servidor->client, servidor->buffer, sizeof(servidor->buffer), 0);
             memset(servidor->buffer, 0, sizeof(servidor->buffer));
             break;
@@ -68,8 +73,13 @@ void Server_Enviar(Server* servidor) {
         case 'b':
             printf("El cliente solicito Generar contrasenia.\n");
             memmove (servidor->bufferString, servidor->bufferString+1, strlen (servidor->bufferString+1) + 1); //Remover primer char correspondiente a la opcion
-            Generarcontrasenia(servidor->buffer,atoi(servidor->bufferString));
-            printf("El resultado enviado es: %s\n",servidor->buffer);
+            if (atoi(servidor->bufferString) >= 8 && atoi(servidor->bufferString) < 50){
+                Generarcontrasenia(servidor->buffer,atoi(servidor->bufferString));
+                printf("El resultado enviado es: %s\n",servidor->buffer);
+            } else {
+                strcpy(servidor->buffer,"ERROR, longitud incorrecta");
+                printf("ERROR, longitud incorrecta\n");
+            }
             send(servidor->client, servidor->buffer, sizeof(servidor->buffer), 0);
             memset(servidor->buffer, 0, sizeof(servidor->buffer));
             break;

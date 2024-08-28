@@ -62,17 +62,9 @@ void Client_Enviar(Client* cliente) {
             case '1':
                 printf("Ingrese la longitud deseada: (Entre 5 y 15)\n");
                 getchar();  // limpiar el buffer del teclado
-                while (fgets(mensaje, sizeof(mensaje), stdin)) {
-                    if (strcmp(mensaje, "volver") == 0) {
-                        break;
-                    }
-                    // Verificar si el número está en el rango deseado
-                    if (atoi(mensaje) >= 5 && atoi(mensaje) <= 15) {
-                        printf("Longitud aceptada:\n");
-                        break;  // Salir del bucle si el número es válido
-                    } else {
-                        printf("Longitud invalida. Intente nuevamente.\n");
-                    }
+                fgets(mensaje, sizeof(mensaje), stdin);
+                if (strcmp(mensaje, "volver") == 0) {
+                    break;
                 }
                 mensaje[strcspn(mensaje, "\n")] = 0;  // eliminar el salto de línea
                 memmove(mensaje + 1, mensaje, strlen(mensaje) + 1); // insertar 'a' al principio
@@ -84,18 +76,9 @@ void Client_Enviar(Client* cliente) {
             case '2':
                 printf("Ingrese la longitud deseada: (Entre 8 inclusive y 50)\n");
                 getchar();  // limpiar el buffer del teclado
-                while (fgets(mensaje, sizeof(mensaje), stdin)) {
-                    if (strcmp(mensaje, "volver") == 0) {
-                        break;
-                    }
-                    // Verificar si el número está en el rango deseado
-                    if (atoi(mensaje) >= 8 && atoi(mensaje) < 50) {
-                        printf("Longitud aceptada:\n");
-                        break;  // Salir del bucle si el número es válido
-                    } else {
-                        printf("Longitud invalida. Intente nuevamente.\n");
-                    }
-                    
+                fgets(mensaje, sizeof(mensaje), stdin);
+                if (strcmp(mensaje, "volver") == 0) {
+                    break;
                 }
                 mensaje[strcspn(mensaje, "\n")] = 0;  // eliminar el salto de línea
                 memmove(mensaje + 1, mensaje, strlen(mensaje) + 1); // insertar 'b' al principio

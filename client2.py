@@ -43,32 +43,18 @@ class Client:
 
             if opcion == '1':
                 print("Ingrese la longitud deseada: (Entre 5 y 15)")
-                while True:
-                    mensaje = input()
-                    if mensaje == "volver":
-                        break
-                    if 5 <= int(mensaje) <= 15:
-                        print("Longitud aceptada:\n")
-                        break
-                    else:
-                        print("Longitud invalida. Intente nuevamente.")
-
+                mensaje = input()
+                if mensaje == "volver":
+                    break
                 mensaje = f"a{mensaje}"
                 self.buffer = mensaje
                 salir = True
 
             elif opcion == '2':
                 print("Ingrese la longitud deseada: (Entre 8 inclusive y 50)")
-                while True:
-                    mensaje = input()
-                    if mensaje == "volver":
-                        break
-                    if 8 <= int(mensaje) < 50:
-                        print("Longitud aceptada:\n")
-                        break
-                    else:
-                        print("Longitud invalida. Intente nuevamente.")
-
+                mensaje = input()
+                if mensaje == "volver":
+                    break
                 mensaje = f"b{mensaje}"
                 self.buffer = mensaje
                 salir = True
